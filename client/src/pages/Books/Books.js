@@ -5,6 +5,8 @@ import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
+import Card from "../../components/Card";
+import Form from "../../components/Form.js";
 
 class Books extends Component {
   // Setting our component's initial state
@@ -65,7 +67,7 @@ class Books extends Component {
         <Row>
           <Col size="md-6">
             <Jumbotron>
-              <h1>What do you need to take today?</h1>
+              <h1 style={{ fontFamily: 'IBM Plex Sans'}}>What do you need to take today?</h1>
             </Jumbotron>
             <form>
               <Input
@@ -96,7 +98,7 @@ class Books extends Component {
           </Col>
           <Col size="md-6 sm-12">
             <Jumbotron>
-              <h1>Medicine to remember</h1>
+              <h1 style={{ fontFamily: 'IBM Plex Sans' }}>Medicine to remember</h1>
             </Jumbotron>
             {this.state.books.length ? (
               <List>
@@ -105,7 +107,7 @@ class Books extends Component {
                     <ListItem key={book._id}>
                       <a href={"/books/" + book._id}>
                         <strong>
-                          {book.title} by {book.author}
+                          {book.title} for {book.author}
                         </strong>
                       </a>
                       <DeleteBtn onClick={() => this.deleteBook(book._id)} />
@@ -116,6 +118,8 @@ class Books extends Component {
             ) : (
               <h3>No Results to Display</h3>
             )}
+           
+            <Form />
           </Col>
         </Row>
       </Container>
